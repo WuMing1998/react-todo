@@ -2,7 +2,7 @@ import Todo from "./pages/Todo";
 
 function App() {
   return (
-    <div className="App">
+    <div style={{padding:20,height:'100vh'}} className="App">
       <Todo></Todo>
     </div>
   );

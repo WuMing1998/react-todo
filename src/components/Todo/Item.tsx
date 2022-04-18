@@ -1,11 +1,16 @@
 import { FC } from "react"
+import { ITodo } from "./typing"
 
-const Item: FC = () => {
+const TItem: FC<ITodo> = ({
+    id,
+    msg,
+    toggle,
+}) => {
     return (
         <>
-
+    
         </>
     )
 }
 
-export default Item
+export default TItem
