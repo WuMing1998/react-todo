@@ -6,9 +6,10 @@ const TItem: FC<ITodo> = ({
     msg,
     toggle,
 }) => {
+    console.log(id,msg,toggle)
     return (
         <>
-    
+            
         </>
     )
 }

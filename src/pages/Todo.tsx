@@ -1,26 +1,29 @@
-import { createContext, FC, useContext, useReducer } from "react"
+import { createContext, Dispatch, FC, useContext, useReducer } from "react"
 
-import { List, Row, Col } from 'antd';
+import { List} from 'antd';
 
 import TInput from "../components/Todo/Input"
 import TItem from "../components/Todo/Item"
 import reducer from "../components/Todo/reducer";
-import { ITodo } from "../components/Todo/typing";
+import { IAction, ITodo } from "../components/Todo/typing";
+
+export interface ITodoContext{
+    state:ITodo[],
+    dispatch:Dispatch<IAction>
+}
 
 const initialState: ITodo[] = [
 ];
+export const TodoContext = createContext({} as ITodoContext);
 
 const Todo: FC = () => {
-
     const [state, dispatch] = useReducer(reducer, initialState);
-
-    const TodoContext = createContext({});
-
+    
     return (
         <TodoContext.Provider value={{ state, dispatch }}>
             <TInput></TInput>
             <List
-                style={{'minWidth':300}}
+                style={{ 'minWidth': 300 }}
                 itemLayout="horizontal" //竖排列表
                 dataSource={state}
                 renderItem={item => (
