@@ -10,3 +10,7 @@ export interface IAction {
     type: TODO_TYPE,
     payload: ITodo | number,
 }
+
+export interface IState {
+    todos: ITodo[];
+}
