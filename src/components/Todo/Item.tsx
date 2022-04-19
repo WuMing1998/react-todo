@@ -1,10 +1,9 @@
-import { FC, RefObject, useCallback, useContext, useDeferredValue, useEffect, useRef, useState } from "react"
+import { FC, RefObject, useContext, useDeferredValue, useEffect, useRef, useState } from "react"
 import { Checkbox, Input, Space, message, InputProps, InputRef } from 'antd';
 import { DeleteFilled, EditOutlined } from '@ant-design/icons'
 
 import { ITodo } from "./typing"
 import { TodoContext } from "../../pages/Todo";
-import { start } from "repl";
 
 const TItem: FC<ITodo> = ({
     id,
@@ -38,7 +37,7 @@ const TItem: FC<ITodo> = ({
     }
     return (
         <>
-            <Checkbox onChange={() => dispatch({ type: 'toggleTodo', payload: id })}>
+            <Checkbox checked={toggle} onChange={() => dispatch({ type: 'toggleTodo', payload: id })}>
                 <Checkbox.Group>
                     {deferrelFlag ? <Input ref={inputRef} defaultValue={msg} onPressEnter={updateTodo} /> : msg}
                 </Checkbox.Group>

@@ -1,4 +1,4 @@
-import { createContext, Dispatch, FC, useReducer } from "react"
+import { createContext, Dispatch, FC, useEffect, useReducer } from "react"
 
 import { List } from 'antd';
 
@@ -12,16 +12,31 @@ export interface ITodoContext {
     dispatch: Dispatch<IAction>
 }
 
-const initialState:IState = {
-    todos:[]
-}
 export const TodoContext = createContext({} as ITodoContext);
 
+const initialState: IState = {
+    todos: []
+}
+
+const init = (initailArg: IState): IState => {
+    const todos = localStorage.getItem('todos')
+
+    return {
+        ...initailArg,
+        todos: todos ? JSON.parse(todos) : initailArg.todos
+    }
+}
+
 const Todo: FC = () => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    console.log();
+    const [state, dispatch] = useReducer(reducer, initialState, init);
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(state.todos));
+    }, [state.todos])
 
     return (
-        <TodoContext.Provider value={{ state:state, dispatch }}>
+        <TodoContext.Provider value={{ state: state, dispatch }}>
             <TInput></TInput>
             <List
                 style={{ 'minWidth': 300 }}

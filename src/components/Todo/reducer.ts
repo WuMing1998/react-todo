@@ -1,5 +1,4 @@
-import Item from "antd/lib/list/Item";
-import { IAction, IState, ITodo, TODO_TYPE } from "./typing"
+import { IAction, IState, ITodo } from "./typing"
 
 export default (state: IState = { todos: [] }, action: IAction) => {
     const { type, payload } = action;
@@ -7,7 +6,7 @@ export default (state: IState = { todos: [] }, action: IAction) => {
         case 'deleteTodo':
             return {
                 ...state,
-                todos: state.todos.filter((item) => {
+                todos:state.todos.filter((item) => {
                     return item.id !== payload as number
                 })
             }
@@ -15,14 +14,14 @@ export default (state: IState = { todos: [] }, action: IAction) => {
             const { id, msg } = payload as ITodo;
             return {
                 ...state,
-                todos: state.todos.map((todo) => {
+                todos:state.todos.map((todo) => {
                     return todo.id === id ? { ...todo, msg } : todo;
                 })
             }
         case 'toggleTodo':
             return {
                 ...state,
-                todos: state.todos.filter((item) => {
+                todos: state.todos.map((item) => {
                     return item.id === payload ? { ...item, toggle: !item.toggle } : item
                 })
             }
