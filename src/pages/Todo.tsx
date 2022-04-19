@@ -43,7 +43,7 @@ const Todo: FC = () => {
                 itemLayout="horizontal" //竖排列表
                 dataSource={state.todos}
                 renderItem={item => (
-                    <List.Item>
+                    <List.Item key={item.id}>
                         <TItem {...item}></TItem>
                     </List.Item>
                 )}
