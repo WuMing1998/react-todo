@@ -39,7 +39,7 @@ const Todo: FC = () => {
         <TodoContext.Provider value={{ state: state, dispatch }}>
             <TInput></TInput>
             <List
-                style={{ 'minWidth': 300 }}
+                style={{ 'minWidth': 300,height:540,overflow:'auto' }}
                 itemLayout="horizontal" //竖排列表
                 dataSource={state.todos}
                 renderItem={item => (

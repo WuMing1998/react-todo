@@ -42,7 +42,7 @@ const TItem: FC<ITodo> = ({
                     {deferrelFlag ? <Input ref={inputRef} defaultValue={msg} onPressEnter={updateTodo} /> : msg}
                 </Checkbox.Group>
             </Checkbox>
-            <Space>
+            <Space style={{paddingRight:8}}>
                 <EditOutlined onClick={() => { setUpdateFlag(!deferrelFlag) }} />
                 <DeleteFilled onClick={() => dispatch({ type: 'deleteTodo', payload: id })} />
             </Space>
